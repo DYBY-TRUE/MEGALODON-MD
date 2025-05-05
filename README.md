@@ -93,6 +93,16 @@
   </a>
 </p>
 
+Credits & Contributors
+
+> <a href="https://github.com/DybyTech">
+  <img alt="MEGALODON MD- OWNER" src="https://img.shields.io/badge/OWNER-DYBY%20TECH-FF0000?style=for-the-badge&logo=github" />
+</a>  
+
+ <a href="https://github.com/Itxxwasi"><img src="https://github.com/Itxxwasi.png" width="250" height="250" alt="Itxx Me Wasi"/></a>
+
+<p><b>THANKS TO WASI TECH.</b></p>
+
 ---
 
 ### ⚙️ Configuration `.env` File
@@ -170,12 +180,3 @@ jobs:
 
 
 
-Credits & Contributors
-
-> <a href="https://github.com/DybyTech">
-  <img alt="MEGALODON MD- OWNER" src="https://img.shields.io/badge/OWNER-DYBY%20TECH-FF0000?style=for-the-badge&logo=github" />
-</a>  
-
- <a href="https://github.com/Itxxwasi"><img src="https://github.com/Itxxwasi.png" width="250" height="250" alt="Itxx Me Wasi"/></a>
-
-<p><b>THANKS TO WASI TECH.</b></p>
