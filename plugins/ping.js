@@ -8,7 +8,7 @@ const ping = async (m, Matrix) => {
     const start = new Date().getTime();
 
     const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
-    const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
+    const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🤍', '✨'];
 
     const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
     let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
@@ -32,7 +32,7 @@ const ping = async (m, Matrix) => {
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363397722863547@newsletter',
+          newsletterJid: '0029VatK7Ab6buMGF3Dq6q0V@newsletter',
           newsletterName: "MEGALODON-MD",
           serverMessageId: 143
         }
