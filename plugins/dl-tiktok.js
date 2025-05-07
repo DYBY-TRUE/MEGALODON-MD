@@ -34,7 +34,7 @@ const tiktok = async (m, Matrix) => {
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: "120363354023106228@newsletter",
+          newsletterJid: "0029VatK7Ab6buMGF3Dq6q0V@newsletter",
           newsletterName: "MEGALODON-MD",
           serverMessageId: 143,
         },
