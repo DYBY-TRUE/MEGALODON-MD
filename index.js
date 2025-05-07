@@ -120,14 +120,13 @@ async function start() {
                         caption: `╓─────────────────╖
 │WELCOME TO MEGALODON MD
 ╙─────────────────╜
-│*⚡ Hello ${m.pushname} 👋🏻*
+│*⚡ Hello 👋🏻*
 │════════════════════
-│⚡ CHANNEL : https://whatsapp.com/channel/0029VatK7Ab6buMGF3Dq6q0V
+│ CHANNEL : https://whatsapp.com/channel/0029VatK7Ab6buMGF3Dq6q0V
 │═══════════════════
-│*⚡ Your Prefix:* = *${prefix}*
+│ *🤍 YOUR PREFIX:* = *${prefix}*
 │═══════════════════
-│🤍 REPO : https://github.com/DybyTech/MEGALODON-MD
-│
+│ *🤍 REPO* : https://github.com/DybyTech/MEGALODON-MD
 ╚══════════════════╝
        © DYBY TECH🕸 AND STEEVY TECH🕸`
                     });
