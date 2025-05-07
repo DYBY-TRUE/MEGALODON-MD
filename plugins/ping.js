@@ -32,7 +32,7 @@ const ping = async (m, Matrix) => {
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '0029VatK7Ab6buMGF3Dq6q0V@newsletter',
+          newsletterJid: '0029VatK7Ab6buMGF3Dq6q0V@newsletter.whatsapp.net',
           newsletterName: "MEGALODON-MD",
           serverMessageId: 143
         }
