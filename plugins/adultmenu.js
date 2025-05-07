@@ -30,7 +30,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterJid: '0029VatK7Ab6buMGF3Dq6q0V@newsletter',
+                        newsletterJid: '120363372853772240@newsletter',
                         newsletterName: "MEGALODON-MD ADULT MENU🔞🔞₊",
                         serverMessageId: 143
                     }
