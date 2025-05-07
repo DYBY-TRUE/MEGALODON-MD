@@ -107,7 +107,7 @@ const menu = async (m, Matrix) => {
           return Buffer.from(response.data, 'binary');
         } catch (error) {
           console.error('Error fetching menu image from URL, falling back to local image:', error);
-          return fs.readFileSync('https://files.catbox.moe/xko1l6.jpg');
+          return fs.readFileSync('https://files.catbox.moe/rful77.jpg');
         }
       } else {
         return fs.readFileSync('https://files.catbox.moe/rful77.jpg');
@@ -124,7 +124,7 @@ const menu = async (m, Matrix) => {
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363397722863547@newsletter',
+          newsletterJid: '0029VatK7Ab6buMGF3Dq6q0V@newsletter',
           newsletterName: "MEGALODON-MD",
           serverMessageId: 143
         }
@@ -346,7 +346,7 @@ ${menuResponse}
           forwardingScore: 999,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363397722863547@newsletter',
+            newsletterJid: '0029VatK7Ab6buMGF3Dq6q0V@newsletter',
             newsletterName: "MEGALODON-MD",
             serverMessageId: 143
           }
