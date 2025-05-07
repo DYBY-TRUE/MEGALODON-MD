@@ -24,7 +24,7 @@ const alive = async (m, Matrix) => {
       forwardingScore: 999,
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
-        newsletterJid: '0029VatK7Ab6buMGF3Dq6q0V@newsletter',
+        newsletterJid: '120363372853772240@newsletter',
         newsletterName: "MEGALODON-MD",
         serverMessageId: 143
       }
