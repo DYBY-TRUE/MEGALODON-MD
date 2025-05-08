@@ -23,7 +23,7 @@ const config = {
   REJECT_CALL: process.env.REJECT_CALL !== undefined ? process.env.REJECT_CALL === 'true' : false, 
   NOT_ALLOW: process.env.NOT_ALLOW !== undefined ? process.env.NOT_ALLOW === 'true' : true,
   MODE: process.env.MODE || "public",
-  MENU_IMAGE: process.env.MENU_IMAGE || "https://files.catbox.moe/230q0c.jpg",
+  MENU_IMAGE: process.env.MENU_IMAGE || "https://files.catbox.moe/rful77.jpg",
   OWNER_NAME: process.env.OWNER_NAME || "Dybytech",
   BOT_NAME: process.env.BOT_NAME || "MEGALODON-MD 🤍",
   OWNER_NUMBER: process.env.OWNER_NUMBER || "50934960331",
