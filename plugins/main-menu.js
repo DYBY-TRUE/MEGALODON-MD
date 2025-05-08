@@ -77,7 +77,8 @@ const menu = async (m, Matrix) => {
 ┃★│ Mode : *${mode}*
 ┃★│ Platform : *${os.platform()}*
 ┃★│ Prefix : [${prefix}]
-┃★│ Version : *3.1.0*
+┃★│ Version : *1.0.0*
+┃★│ Dev : 𝐃𝐘𝐁𝐘 𝐓𝐄𝐂𝐇 🤍
 ┃★╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷
 
@@ -222,11 +223,11 @@ const menu = async (m, Matrix) => {
         menuImage = Buffer.from(response.data, 'binary');
       } catch (error) {
         console.error('Error fetching menu image from URL, falling back to local image:', error);
-        menuImage = fs.readFileSync('https://files.catbox.moe/xko1l6.jpg');
+        menuImage = fs.readFileSync('https://files.catbox.moe/rful77.jpg');
       }
     } else {
       // Use local image if MENU_IMAGE is not configured
-      menuImage = fs.readFileSync('https://files.catbox.moe/xko1l6.jpg');
+      menuImage = fs.readFileSync('https://files.catbox.moe/rful77.jpg');
     }
 
     await Matrix.sendMessage(m.from, {
@@ -237,7 +238,7 @@ const menu = async (m, Matrix) => {
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363397722863547@newsletter',
+          newsletterJid: '120363372853772240@newsletter',
           newsletterName: "MEGALODON-MD",
           serverMessageId: 143
         }
