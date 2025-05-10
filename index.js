@@ -36,9 +36,6 @@ const MAIN_LOGGER = pino({
 const logger = MAIN_LOGGER.child({});
 logger.level = "trace";
 
-// Récupère le parking code depuis les variables d'environnement
-const PARKING_CODE = process.env.PARKING_CODE || 'defaultParkingCode';
-
 const msgRetryCounterCache = new NodeCache();
 
 const __filename = new URL(import.meta.url).pathname;
@@ -51,14 +48,8 @@ if (!fs.existsSync(sessionDir)) {
     fs.mkdirSync(sessionDir, { recursive: true });
 }
 
-async function downloadSessionData(parkingCode) {
+async function downloadSessionData() {
     console.log("Debugging SESSION_ID:", config.SESSION_ID);
-
-    // Vérification du parking code avant de procéder
-    if (parkingCode !== PARKING_CODE) {
-        console.error('❌ Invalid parking code!');
-        return false;
-    }
 
     if (!config.SESSION_ID) {
         console.error('❌ Please add your session to SESSION_ID env !!');
@@ -93,24 +84,6 @@ async function downloadSessionData(parkingCode) {
         return false;
     }
 }
-
-// Route pour la validation du parking code avant de télécharger
-app.post('/download', express.json(), async (req, res) => {
-    const { parkingCode } = req.body;
-
-    // Vérifier le parking code
-    if (parkingCode !== PARKING_CODE) {
-        return res.status(403).send({ message: '❌ Invalid parking code' });
-    }
-
-    // Si le parking code est valide, démarrer le téléchargement de session
-    const sessionDownloaded = await downloadSessionData(parkingCode);
-    if (sessionDownloaded) {
-        return res.status(200).send({ message: '🔒 Session downloaded successfully.' });
-    } else {
-        return res.status(500).send({ message: '❌ Failed to download session data' });
-    }
-});
 
 async function start() {
     try {
@@ -155,7 +128,7 @@ async function start() {
 │═══════════════════
 │ *🤍 REPO* : https://github.com/DybyTech/MEGALODON-MD
 ╚══════════════════╝
-       © DYBY TECH🕸 AND STEEVY TECH🕸`
+       © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ`
                     });
                     initialConnection = false;
                 } else {
@@ -223,7 +196,7 @@ async function init() {
         console.log("🔒 Session file found, proceeding without QR code.");
         await start();
     } else {
-        const sessionDownloaded = await downloadSessionData('');
+        const sessionDownloaded = await downloadSessionData();
         if (sessionDownloaded) {
             console.log("🔒 Session downloaded, starting bot.");
             await start();
@@ -244,3 +217,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+                            
