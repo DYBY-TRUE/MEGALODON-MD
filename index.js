@@ -128,7 +128,7 @@ async function start() {
 │═══════════════════
 │ *🤍 REPO* : https://github.com/DybyTech/MEGALODON-MD
 ╚══════════════════╝
-       © DYBY TECH🕸 AND STEEVY TECH🕸`
+       © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ`
                     });
                     initialConnection = false;
                 } else {
@@ -176,7 +176,7 @@ async function start() {
                     await Matrix.readMessages([mek.key]);
                     
                     if (config.AUTO_STATUS_REPLY) {
-                        const customMessage = config.STATUS_READ_MSG || '✅ Auto Status Seen Bot By INCONNU-XD';
+                        const customMessage = config.STATUS_READ_MSG || '✅ Auto Status Seen Bot By MEGALODON-MD';
                         await Matrix.sendMessage(fromJid, { text: customMessage }, { quoted: mek });
                     }
                 }
