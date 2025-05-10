@@ -1,78 +1,55 @@
-import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
-const { generateWAMessageFromContent, proto } = pkg;
+import config from '../config.cjs';
 
-const alive = async (m, Matrix) => {
-  const uptimeSeconds = process.uptime();
-  const days = Math.floor(uptimeSeconds / (24 * 3600));
-  const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
-  const minutes = Math.floor((uptimeSeconds % 3600) / 60);
-  const seconds = Math.floor(uptimeSeconds % 60);
-  
-  const prefix = /^[\\/!#.]/gi.test(m.body) ? m.body.match(/^[\\/!#.]/gi)[0] : '/';
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).toLowerCase() : '';
-    if (['alive', 'hansuptime', 'uptime'].includes(cmd)) {
+const alive = async (m, gss) => {
+  try {
+    const prefix = config.PREFIX;
+    const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  const uptimeMessage = `
-> ╔═══════════╗
-> ┇ *${days} Day*
-> ┇ *${hours} Hour*
-> ┇ *${minutes} Minute*
-> ┇ *${seconds} Second*
-> ╚═══════════╝
-`;
+    const validCommands = ['alive', 'bot', 'uptime'];
+    if (!validCommands.includes(cmd)) return;
 
-  const buttons = [
+    const uptime = process.uptime();
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
+
+    const aliveMessage = `
+*✅ MEGALODON-MD IS ONLINE!*
+╭─────────────◆
+│ *Bot Name:* MEGALODON-MD
+│ *Uptime:* ${hours}h ${minutes}m ${seconds}s
+│ *Mode:* ${global.public ? 'Public' : 'Private'}
+│ *Owner:* 50934960331
+╰─────────────◆
+`.trim();
+
+    const buttons = [
       {
-        "name": "quick_reply",
-        "buttonParamsJson": JSON.stringify({
-          display_text: "ping ⚡️",
-          id: `${prefix}ping`
-        })
+        buttonId: `${prefix}menu`,
+        buttonText: { displayText: '📜 Menu' },
+        type: 1,
+      },
+      {
+        buttonId: `${prefix}ping`,
+        buttonText: { displayText: '📶 Ping' },
+        type: 1,
       }
     ];
 
-  const msg = generateWAMessageFromContent(m.from, {
-    viewOnceMessage: {
-      message: {
-        messageContextInfo: {
-          deviceListMetadata: {},
-          deviceListMetadataVersion: 2
-        },
-        interactiveMessage: proto.Message.InteractiveMessage.create({
-          body: proto.Message.InteractiveMessage.Body.create({
-            text: uptimeMessage
-          }),
-          footer: proto.Message.InteractiveMessage.Footer.create({
-            text: "© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ"
-          }),
-          header: proto.Message.InteractiveMessage.Header.create({
-            title: "",
-            gifPlayback: true,
-            subtitle: "",
-            hasMediaAttachment: false 
-          }),
-          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-            buttons
-          }),
-          contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363372853772240@newsletterJid',
-                  newsletterName: "MEGALODON ALIVE",
-                  serverMessageId: 143
-                }
-              }
-        }),
-      },
-    },
-  }, {});
+    const imageUrl = 'https://files.catbox.moe/rful77.jpg';
 
-  await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-    messageId: msg.key.id
-  });
-    }
+    await gss.sendMessage(m.from, {
+      image: { url: imageUrl },
+      caption: aliveMessage,
+      buttons: buttons,
+      footer: 'MEGALODON-MD WHATSAPP BOT',
+      headerType: 4
+    }, { quoted: m });
+
+  } catch (error) {
+    console.error('Error:', error);
+    m.reply('An error occurred while processing the command.');
+  }
 };
 
 export default alive;
