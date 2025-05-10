@@ -45,7 +45,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
           {
             name: "cta_url",
             buttonParamsJson: JSON.stringify({
-              display_text: "sʜᴏᴡ 💜 ғᴏʀ ᴍᴇɢᴀʟᴏᴅᴏɴ-ᴍᴅ",
+              display_text: "sʜᴏᴡ 💜 ғᴏʀ ",
               url: `https://whatsapp.com/channel/0029VatK7Ab6buMGF3Dq6q0V`
             })
           },
@@ -70,7 +70,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
                   text: lyrics
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.create({
-                  text: "> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ-ᴍᴅ*"
+                  text: "> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ"
                 }),
                 header: proto.Message.InteractiveMessage.Header.create({
                   title: "",
@@ -102,4 +102,3 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 };
 
 export default Lyrics;
-      
