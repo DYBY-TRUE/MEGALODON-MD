@@ -26,7 +26,7 @@ const config = {
   MENU_IMAGE: process.env.MENU_IMAGE || "https://files.catbox.moe/rful77.jpg",
   OWNER_NAME: process.env.OWNER_NAME || "Dybytech",
   BOT_NAME: process.env.BOT_NAME || "MEGALODON-MD 🤍",
-  OWNER_NUMBER: process.env.OWNER_NUMBER || "50934960331",
+  OWNER_NUMBER: process.env.OWNER_NUMBER || "",
   GEMINI_KEY: process.env.GEMINI_KEY || "AIzaSyCUPaxfIdZawsKZKqCqJcC-GWiQPCXKTDc",
   WELCOME: process.env.WELCOME !== undefined ? process.env.WELCOME === 'true' : false, 
 };
