@@ -14,8 +14,8 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
     if (!text) return m.reply(`Hello *_${m.pushName}_,*\n Here's Example Usage: _.lyrics Spectre|Alan Walker._`);
 
     try {
-      await m.React('🕘');
-      await m.reply('A moment, *MEGALODON-MD* is generating your lyrics request...');
+      await m.React('🎶');
+      await m.reply('Wait pls, *ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ* is generating your lyrics request...');
 
       if (!text.includes('|')) {
         return m.reply('Please provide the song name and artist name separated by a "|", for example: Spectre|Alan Walker.');
@@ -45,7 +45,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
           {
             name: "cta_url",
             buttonParamsJson: JSON.stringify({
-              display_text: "sʜᴏᴡ 💜 ғᴏʀ ",
+              display_text: "sʜᴏᴡ 💜 ғᴏʀ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ",
               url: `https://whatsapp.com/channel/0029VatK7Ab6buMGF3Dq6q0V`
             })
           },
@@ -70,7 +70,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
                   text: lyrics
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.create({
-                  text: "> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ"
+                  text: "> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ*"
                 }),
                 header: proto.Message.InteractiveMessage.Header.create({
                   title: "",
@@ -89,7 +89,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
           messageId: msg.key.id
         });
 
-        await m.React('✅');
+        await m.React('✅️');
       } else {
         throw new Error('Invalid response from the Lyrics API.');
       }
@@ -102,3 +102,4 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 };
 
 export default Lyrics;
+      
