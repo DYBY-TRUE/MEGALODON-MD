@@ -14,22 +14,33 @@ const alive = async (m, gss) => {
     const seconds = Math.floor(uptime % 60);
 
     const aliveMessage = `
-✅ *MEGALODON-MD is alive!*
+👋 Hello @${m.sender.split('@')[0]}
 
-*Uptime:* ${hours}h ${minutes}m ${seconds}s
-*Mode:* ${global.public ? 'Public' : 'Private'}
-*Owner:* ${config.OWNER_NUMBER}
+✅ *MEGALODON-MD is Alive!*
+
+⏱️ *Uptime:* ${hours}h ${minutes}m ${seconds}s  
+🔐 *Mode:* ${global.public ? 'Public' : 'Private'}  
+👑 *Owner:* ${config.OWNER_NUMBER}
 `.trim();
 
     await gss.sendMessage(m.from, {
-      text: aliveMessage,
-      footer: 'MEGALODON-MD WHATSAPP BOT',
-      headerType: 1
+      image: { url: 'https://i.ibb.co/4m3Z4Mn/megalodon-banner.jpg' }, // Replace with your image if needed
+      caption: aliveMessage,
+      contextInfo: {
+        mentionedJid: [m.sender],
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363372853772240@newsletter',
+          newsletterName: "MEGALODON-MD",
+          serverMessageId: 143
+        }
+      }
     }, { quoted: m });
 
   } catch (err) {
     console.error('Alive command error:', err);
-    m.reply('❌ An error occurred while running the alive command.');
+    m.reply('❌ An error occurred while executing the alive command.');
   }
 };
 
