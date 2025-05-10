@@ -7,6 +7,11 @@ const fs = require("fs");
 require("dotenv").config();
 
 const config = {
+  PREFIX: '.', // Le préfixe utilisé pour les commandes (ex: .alive, .update)
+  commandes sensibles
+  
+  OWNER: ['50948702213@s.whatsapp.net'], // Remplace par ton numéro WhatsApp avec @s.whatsapp.net à la fin
+  SUDO: ['50934960331@s.whatsapp.net'], // Autres utilisateurs autorisés à utiliser les 
   SESSION_ID: process.env.SESSION_ID || "",
   PREFIX: process.env.PREFIX || '.',
   AUTO_STATUS_SEEN: process.env.AUTO_STATUS_SEEN !== undefined ? process.env.AUTO_STATUS_SEEN === 'true' : true, 
