@@ -7,7 +7,7 @@ const fs = require("fs");
 require("dotenv").config();
 
 const config = {
-  PREFIX: '.', // Le préfixe utilisé pour les commandes (ex: .alive, .update)
+  
   commandes sensibles
   
   OWNER: ['50948702213@s.whatsapp.net'], // Remplace par ton numéro WhatsApp avec @s.whatsapp.net à la fin
