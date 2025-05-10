@@ -2,6 +2,9 @@ import config from '../config.cjs';
 
 const alive = async (m, gss) => {
   try {
+    // Affiche le contenu du message pour le débogage
+    console.log('Message reçu:', m.body);
+
     const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     
@@ -13,6 +16,9 @@ const alive = async (m, gss) => {
     const minutes = Math.floor((uptime % 3600) / 60);
     const seconds = Math.floor(uptime % 60);
 
+    // Affiche l'expéditeur pour le débogage
+    console.log('Expéditeur:', m.sender);
+
     const aliveMessage = `
 👋 Hello @${m.sender.split('@')[0]}
 
@@ -23,8 +29,9 @@ const alive = async (m, gss) => {
 👑 *Owner:* ${config.OWNER_NUMBER}
 `.trim();
 
+    // Envoi du message avec l'image et le texte
     await gss.sendMessage(m.from, {
-      image: { url: 'https://i.ibb.co/4m3Z4Mn/megalodon-banner.jpg' }, // Replace with your image if needed
+      image: { url: 'https://files.catbox.moe/xko1l6.jpg' }, // Remplacer par ton image si nécessaire
       caption: aliveMessage,
       contextInfo: {
         mentionedJid: [m.sender],
@@ -39,8 +46,9 @@ const alive = async (m, gss) => {
     }, { quoted: m });
 
   } catch (err) {
-    console.error('Alive command error:', err);
-    m.reply('❌ An error occurred while executing the alive command.');
+    // Log l'erreur dans la console et répond à l'utilisateur
+    console.error('Erreur de commande alive :', err);
+    m.reply(`❌ An error occurred while executing the alive command. Error: ${err.message}`);
   }
 };
 
