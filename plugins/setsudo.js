@@ -1,23 +1,27 @@
-const fs = require('fs');
-const sudoPath = './sudo.json';
+import fs from 'fs';
+import config from '../config.cjs';
 
-module.exports = {
-  name: 'setsudo',
-  alias: ['addsudo'],
-  category: 'Owner',
-  desc: 'Ajoute un utilisateur comme sudo',
-  use: '@tag',
-  async exec(m, conn, { args, isOwner }) {
-    if (!isOwner) return m.reply("Only the owner can add a sudo .");
+const setsudo = async (m, gss) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const text = m.body.slice(prefix.length + cmd.length).trim();
 
-    let mentioned = m.mentionedJid[0];
-    if (!mentioned) return m.reply("Mention the user to add as sudo .");
+  if (cmd !== 'setsudo') return;
+  if (m.sender !== config.OWNER_NUMBER + '@s.whatsapp.net') return m.reply("*❌ ONLY THE OWNER CAN USE THIS COMMAND*");
 
-    let sudo = JSON.parse(fs.readFileSync(sudoPath));
-    if (sudo.includes(mentioned)) return m.reply("This user is already sudo. ");
+  let sudoList = JSON.parse(fs.readFileSync('./sudo.json', 'utf-8'));
 
-    sudo.push(mentioned);
-    fs.writeFileSync(sudoPath, JSON.stringify(sudo, null, 2));
-    m.reply(`Added as sudo : ${mentioned.split('@')[0]}`);
-  }
+  const target = m.mentionedJid?.[0] ||
+                 (text.replace(/[^0-9]/g, '') ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : null);
+
+  if (!target) return m.reply("*❌ PLEASE MENTION OR PROVIDE A VALID NUMBER TO ADD AS SUDO*");
+
+  if (sudoList.includes(target)) return m.reply("*✅ USER IS ALREADY A SUDO*");
+
+  sudoList.push(target);
+  fs.writeFileSync('./sudo.json', JSON.stringify(sudoList, null, 2));
+
+  m.reply(`*✅ @${target.split('@')[0]} ADDED TO SUDO LIST*`, { mentions: [target] });
 };
+
+export default setsudo;
