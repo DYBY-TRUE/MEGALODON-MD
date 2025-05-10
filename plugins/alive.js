@@ -5,7 +5,7 @@ const alive = async (m, gss) => {
     const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     
-    const validCommands = ['alive', 'bot', 'status'];
+    const validCommands = ['alive', 'bot', 'test'];
     if (!validCommands.includes(cmd)) return;
 
     const uptime = process.uptime();
@@ -21,14 +21,8 @@ const alive = async (m, gss) => {
 *Owner:* ${config.OWNER_NUMBER}
 `.trim();
 
-    const buttons = [
-      { buttonId: `${prefix}menu`, buttonText: { displayText: '📜 Menu' }, type: 1 },
-      { buttonId: `${prefix}ping`, buttonText: { displayText: '📶 Ping' }, type: 1 }
-    ];
-
     await gss.sendMessage(m.from, {
       text: aliveMessage,
-      buttons,
       footer: 'MEGALODON-MD WHATSAPP BOT',
       headerType: 1
     }, { quoted: m });
