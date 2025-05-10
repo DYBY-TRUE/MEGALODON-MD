@@ -18,7 +18,7 @@ const thanks = async (m, gss) => {
 `.trim();
 
     await gss.sendMessage(m.from, {
-      image: { url: 'https://i.ibb.co/4m3Z4Mn/megalodon-banner.jpg' }, // Change si tu veux une autre image
+      image: { url: 'https://files.catbox.moe/e65j50.jpeg' }, // Change si tu veux une autre image
       caption: message,
       contextInfo: {
         mentionedJid: [m.sender],
