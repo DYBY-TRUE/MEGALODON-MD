@@ -201,6 +201,9 @@ const menu = async (m, Matrix) => {
 ┃◈┃• ᴀʟᴡᴀʏsᴏɴʟɪɴᴇ
 ┃◈┃• ᴀᴜᴛᴏʀᴇᴀᴅ
 ┃◈┃• ᴀᴜᴛᴏsᴠɪᴇᴡ
+┃◈┃• sᴇᴛsᴜᴅᴏ 
+┃◈┃• ᴅᴇʟsᴜᴅᴏ
+┃◈┃• ʟɪsᴛsᴜᴅᴏ
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
 
@@ -211,7 +214,7 @@ const menu = async (m, Matrix) => {
 ┃◈┃• ɢɪᴛʜᴜʙsᴛᴀʟᴋ
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
-> *${config.DESCRIPTION}*`;
+> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ*`;
 
     // Check if MENU_IMAGE exists in config and is not empty
     let menuImage;
