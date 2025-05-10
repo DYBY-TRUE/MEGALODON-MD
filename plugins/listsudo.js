@@ -1,17 +1,19 @@
-const fs = require('fs');
-const sudoPath = './sudo.json';
+import fs from 'fs';
+import config from '../config.cjs';
 
-module.exports = {
-  name: 'listsudo',
-  category: 'Owner',
-  desc: 'List all sudo users',
-  async exec(m, conn, { isOwner }) {
-    if (!isOwner) return m.reply("Only the owner can view the sudo list.");
+const listsudo = async (m, gss) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    let sudo = JSON.parse(fs.readFileSync(sudoPath));
-    if (sudo.length === 0) return m.reply("No sudo users found.");
+  if (cmd !== 'listsudo') return;
+  if (m.sender !== config.OWNER_NUMBER + '@s.whatsapp.net') return m.reply("*❌ ONLY THE OWNER CAN USE THIS COMMAND*");
 
-    let list = sudo.map(jid => `• wa.me/${jid.replace(/[^0-9]/g, '')}`).join('\n');
-    m.reply(`Current sudo users:\n${list}`);
-  }
+  let sudoList = JSON.parse(fs.readFileSync('./sudo.json', 'utf-8'));
+
+  if (sudoList.length === 0) return m.reply("*🚫 NO SUDO USERS FOUND*");
+
+  const list = sudoList.map(jid => `• wa.me/${jid.split('@')[0]}`).join('\n');
+  m.reply(`*✅ CURRENT SUDO USERS:*\n${list}`);
 };
+
+export default listsudo;
