@@ -19,13 +19,10 @@ const update = async (m, Matrix) => {
         : "";
 
     if (cmd === "update") {
-        // Only allow the owner or sudo users to use this command
-        const sender = m.sender;
-        const isOwner = config.OWNER.includes(sender);
-        const isSudo = (config.SUDO || []).includes(sender);
-
-        if (!isOwner && !isSudo) {
-            return Matrix.sendMessage(m.from, { text: "❌ *Only the owner or sudo users can use this command!*" }, { quoted: m });
+        // Only allow the bot itself to use this command
+        const botNumber = await Matrix.decodeJid(Matrix.user.id);
+        if (m.sender !== botNumber) {
+            return Matrix.sendMessage(m.from, { text: "❌ *Only the bot itself can use this command!*" }, { quoted: m });
         }
 
         await m.React("⏳");
@@ -133,4 +130,5 @@ async function copyFolderSync(source, target, filesToSkip = []) {
     }
 }
 
-export default update;
+export default update; 
+      
