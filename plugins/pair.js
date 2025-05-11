@@ -5,10 +5,10 @@ const pair = async (m, gss) => {
   try {
     const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-
     const validCommands = ['pair', 'getpair', 'clonebot'];
     if (!validCommands.includes(cmd)) return;
 
+    // Get number from args or quoted
     const args = m.body.trim().split(/ +/).slice(1);
     let number = args[0];
 
@@ -18,28 +18,31 @@ const pair = async (m, gss) => {
     }
 
     if (!number || !number.startsWith('509')) {
-      return await gss.sendMessage(m.from, {
-        text: `❌ Please provide a valid number starting with *509* or reply to a message that contains one.\n\nExample: ${prefix}pair 50912345678`,
+      return gss.sendMessage(m.from, {
+        text: `❌ Please provide a valid number starting with *509* or reply to a message with one.\n\nExample: ${prefix}pair 50912345678`,
       }, { quoted: m });
     }
 
-    const res = await axios.get(`https://meg-lodon-session.onrender.com/code?number=${number}`);
-    if (!res.data || !res.data.code) {
-      return await gss.sendMessage(m.from, {
+    // Fetch pairing code
+    const res = await axios.get(`https://megalodon-md-v2.onrender.com/code?number=${number}`);
+    const code = res.data?.code;
+
+    if (!code) {
+      return gss.sendMessage(m.from, {
         text: `❌ Failed to retrieve pairing code for ${number}.`,
       }, { quoted: m });
     }
 
-    const code = res.data.code;
+    // Success message
     const message = `
-🔐 *PAIRING CODE SUCCESSFULLY GENERATED!*
+✅ *PAIRING CODE GENERATED!*
 
-• 👤 Number: ${number}
-• 🔑 Code: ${code}
-`.trim();
+• Number: ${number}
+• Code: ${code}
+    `.trim();
 
     await gss.sendMessage(m.from, {
-      image: { url: 'https://files.catbox.moe/sgvh0h.jpg' }, // You can replace this with your own image
+      image: { url: 'https://files.catbox.moe/sgvh0h.jpg' }, // Optional image
       caption: message,
       contextInfo: {
         mentionedJid: [m.sender],
@@ -54,8 +57,8 @@ const pair = async (m, gss) => {
     }, { quoted: m });
 
   } catch (err) {
-    console.error('Pairing command error:', err);
-    m.reply(`❌ An error occurred while generating the pairing code. Error: ${err.message}`);
+    console.error('PAIRING ERROR:', err);
+    return m.reply(`❌ Error occurred while generating the pairing code:\n${err.message}`);
   }
 };
 
