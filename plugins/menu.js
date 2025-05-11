@@ -64,7 +64,7 @@ const menu = async (m, Matrix) => {
   const mode = config.MODE === 'public' ? 'public' : 'private';
   const pref = config.PREFIX;
 
-  const validCommands = ['list', 'help', 'menu'];
+  const validCommands = ['list', 'menu'];
 
   if (validCommands.includes(cmd)) {
     const mainMenu = `
@@ -336,7 +336,7 @@ const menu = async (m, Matrix) => {
 
 ${menuResponse}
 
-> *${config.DESCRIPTION}*`;
+> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ**`;
 
       // Send the response with image and context info
       await Matrix.sendMessage(m.from, {
